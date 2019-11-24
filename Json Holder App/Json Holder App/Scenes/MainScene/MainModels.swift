@@ -22,12 +22,12 @@ enum Main {
     struct Response {
         var user: [User]?
         var posts: [Post]?
-        var todos: [Post]?
+        var todos: [Todo]?
     }
     struct ViewModel {
         var user: [User]?
         var posts: [Post]?
-        var todos: [Post]?
+        var todos: [Todo]?
     }
     struct PostsViewModel {
         var postForUser : [Post]?

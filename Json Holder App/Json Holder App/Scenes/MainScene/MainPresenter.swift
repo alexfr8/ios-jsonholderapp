@@ -15,18 +15,12 @@ import UIKit
 protocol MainPresentationLogic {
   func setupView(response: Main.Models.Response)
   func presentAllUser(response: Main.Models.Response)
+    func presentPostAndTodosForUserId(response: Main.Models.Response)
   func showError(msg: String)
 }
 
 class MainPresenter: MainPresentationLogic {
-    
-    
-   
-    
-    
-    
-    
-    
+
   weak var viewController: MainDisplayLogic?
   
   // MARK: Setup and update view
@@ -40,6 +34,11 @@ class MainPresenter: MainPresentationLogic {
         let viewModel = Main.Models.ViewModel()
         viewController?.setupView(viewModel: viewModel)
  }
+    
+    
+    func presentPostAndTodosForUserId(response: Main.Models.Response) {
+          
+    }
     
     //MARK: Show error
     

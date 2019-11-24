@@ -15,21 +15,28 @@ import UIKit
 protocol MainBusinessLogic {
     func setupView()
     func getAllUsers()
-    func userSelected(userId: Int)
+    func userSelected(userIndex: Int)
+    func getUserCount() -> Int
+    func getTodoCount() -> Int
+    func getPostCount() -> Int
 }
 
 protocol MainDataStore {
+    var userList: [User]? { get set }
+    var todoList: [Todo]? { get set }
+    var postList: [Post]? { get set }
     
 }
 
 class MainInteractor: MainBusinessLogic, MainDataStore {
     
+    var todoList: [Todo]?
+    var postList: [Post]?
+    var userList: [User]?
     
     var presenter: MainPresentationLogic?
     var worker: MainWorker?
-    //var name: String = ""
     
-    // MARK: Do something
     
     
     func setupView() {
@@ -41,24 +48,47 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
         worker = MainWorker()
         worker?.getAllUsers(completionHandler: {[weak self] (userList, errorString) in
             if errorString.isEmpty {
-                
-            } else {
                 let response = Main.Models.Response()
                 self?.presenter?.presentAllUser(response: response)
-            }
-        })
-    }
-    
-    func userSelected(userId: Int) {
-        worker = MainWorker()
-        worker?.getPostByUserAndTodos(userId: userId, completionHandler: { [weak self] (todoList, postList, errorString) in
-            if errorString.isEmpty {
-                
             } else {
-                
+                self?.presenter?.showError(msg: errorString)
             }
         })
     }
     
+    func userSelected(userIndex: Int) {
+        worker = MainWorker()
+        if let user = userList?.getElement(userIndex) {
+            worker?.getPostByUserAndTodos(userId: user.id ?? 0, completionHandler: { [weak self] (todoList, postList, errorString) in
+                if errorString.isEmpty {
+                    var response = Main.Models.Response()
+                    response.posts = postList
+                    response.todos = todoList
+                    self?.presenter?.presentPostAndTodosForUserId(response: response)
+                } else {
+                    self?.presenter?.showError(msg: errorString)
+                }
+            })
+        }
+    }
     
+    func getUserCount() -> Int {
+        return userList?.count ?? 0
+    }
+    
+    func getTodoList() -> Int {
+        return todoList?.count ?? 0
+    }
+    
+    func getPostList() -> Int {
+        return postList?.count ?? 0
+    }
+    
+    func getTodoCount() -> Int {
+        return todoList?.count ?? 0
+    }
+    
+    func getPostCount() -> Int {
+        return postList?.count ?? 0
+    }
 }

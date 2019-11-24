@@ -133,6 +133,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z9J-Vw-cY7"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionPosts" destination="DKw-J7-cIX" id="Loa-eI-hDR"/>
+                        <outlet property="collectionTodos" destination="rWj-ZH-EQN" id="jge-6d-9fO"/>
+                        <outlet property="collectionUsers" destination="ePf-d1-RQ0" id="Sfz-6I-apk"/>
+                        <outlet property="lblAddress" destination="Ftq-sR-igf" id="jFB-5D-Puz"/>
+                        <outlet property="lblEmail" destination="GPK-nT-Btc" id="7Jn-v4-0Wb"/>
+                        <outlet property="lblName" destination="szC-xT-JNq" id="fXi-s1-aJz"/>
+                        <outlet property="lblPhone" destination="RyY-OH-hK6" id="nj0-rB-FBw"/>
+                        <outlet property="lblUserName" destination="qyZ-UI-VvF" id="aKd-C6-7TX"/>
+                        <outlet property="lblWebsite" destination="Alw-4b-pPc" id="iwd-l6-Vs5"/>
+                        <outlet property="stackView" destination="Eb0-on-NJc" id="Tvy-Gw-VAx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptz-xo-04K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

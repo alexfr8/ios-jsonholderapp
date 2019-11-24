@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 // Execute function on a background thread
 func background(_ f: @escaping () -> Void) {
     DispatchQueue.global(qos: .background).async {

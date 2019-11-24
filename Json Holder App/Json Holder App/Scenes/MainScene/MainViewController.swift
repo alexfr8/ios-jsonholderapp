@@ -14,12 +14,24 @@ import UIKit
 
 protocol MainDisplayLogic: class {
     func setupView(viewModel: Main.Models.ViewModel)
-    func showUsers(viewModel: Main.Models.ViewModel)
-    func showPostForUser(viewModel: Main.Models.PostsViewModel)
+    func showUsers()
+    func showPostForUser()
     func showError(msg: String)
 }
 
 class MainViewController: BaseViewController {
+    
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var lblUserName: UILabel!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblWebsite: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
+    
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var collectionUsers: UICollectionView!
+    @IBOutlet weak var collectionTodos: UICollectionView!
+    @IBOutlet weak var collectionPosts: UICollectionView!
     
     
     var interactor: MainBusinessLogic?
@@ -73,23 +85,65 @@ class MainViewController: BaseViewController {
 }
 
 extension MainViewController: MainDisplayLogic {
-    func showPostForUser(viewModel: Main.Models.PostsViewModel) {
-        
+    func showUsers() {
+        collectionUsers.reloadData()
+        collectionUsers.isHidden = false
     }
+    
+    func showPostForUser() {
+        collectionPosts.reloadData()
+        collectionTodos.reloadData()
+        stackView.isHidden = false
+    }
+    
+   
     
     func setupView(viewModel: Main.Models.ViewModel) {
         
+        self.collectionUsers.isHidden = true
+        self.stackView.isHidden = true
+        self.lblName.text = ""
+        self.lblEmail.text = ""
+        self.lblPhone.text = ""
+        self.lblAddress.text = ""
+        self.lblWebsite.text = ""
+        self.lblUserName.text = ""
+        
+        collectionUsers.register(UINib(nibName: String(describing: UserCollectionCell.self), bundle: nil), forCellWithReuseIdentifier: UserCollectionCell.cellIdentifier)
+        collectionUsers.backgroundColor = UIColor.clear
+        collectionUsers.delegate = self
+        collectionUsers.dataSource = self
     }
     
-    func showUsers(viewModel: Main.Models.ViewModel) {
-        
-    }
+    
     
     func showError(msg: String) {
         
     }
 }
 
-extension MainViewController: UICollectionViewDelegate {
+extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == collectionUsers {
+            return self.interactor?.getUserCount() ?? 0
+        } else if collectionView ==  collectionPosts {
+            return self.interactor?.getPostCount() ?? 0
+        } else if collectionView == collectionTodos {
+            return self.interactor?.getTodoCount() ?? 0
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == collectionUsers {
+            self.interactor?.userSelected(userIndex: indexPath.row)
+        }
+    }
     
 }
