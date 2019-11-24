@@ -35,21 +35,21 @@ class JSONHolderManager {
                             let decodeUsers = try decoder.decode([User].self, from: data)
                             completionHandler(JSONHolderRequestResult.Success(result: decodeUsers))
                         } catch {
-                            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+                            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingusers".localized))
                         }
                     }
                 }
             }
             dataTask.resume()
         } else {
-            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingusers".localized))
         }
     }
     
-    func fetchPosts(completionHandler: @escaping (JSONHolderRequestResult<[Post]>) -> Void) {
-        let tail: String = "/post"
+    func fetchPostsById(userId: Int, completionHandler: @escaping (JSONHolderRequestResult<[Post]>) -> Void) {
+        let tail: String = "/posts?userId="
         
-        if let url = URL(string: String(format: "%@%@", baseURL,tail)) {
+        if let url = URL(string: String(format: "%@%@%@", baseURL,tail, userId)) {
             let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 ui {
                     if let data = data {
@@ -58,14 +58,14 @@ class JSONHolderManager {
                             let decodedPosts = try decoder.decode([Post].self, from: data)
                             completionHandler(JSONHolderRequestResult.Success(result: decodedPosts))
                         } catch {
-                            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+                            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingposts".localized))
                         }
                     }
                 }
             }
             dataTask.resume()
         } else {
-            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingposts".localized))
         }
     }
     
@@ -81,14 +81,14 @@ class JSONHolderManager {
                             let decodedPosts = try decoder.decode([Post].self, from: data)
                             completionHandler(JSONHolderRequestResult.Success(result: decodedPosts))
                         } catch {
-                            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+                            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingcommentsbypost".localized))
                         }
                     }
                 }
             }
             dataTask.resume()
         } else {
-            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingcommentsbypost".localized))
         }
     }
     
@@ -104,14 +104,14 @@ class JSONHolderManager {
                             let decodedAlbums = try decoder.decode([Album].self, from: data)
                             completionHandler(JSONHolderRequestResult.Success(result: decodedAlbums))
                         } catch {
-                            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+                            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingalbumsbyuser".localized))
                         }
                     }
                 }
             }
             dataTask.resume()
         } else {
-            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingalbumsbyuser".localized))
         }
     }
     
@@ -127,14 +127,14 @@ class JSONHolderManager {
                             let decodedAlbums = try decoder.decode([Photo].self, from: data)
                             completionHandler(JSONHolderRequestResult.Success(result: decodedAlbums))
                         } catch {
-                            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+                            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingphotosbyalbumid".localized))
                         }
                     }
                 }
             }
             dataTask.resume()
         } else {
-            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingphotosbyalbumid".localized))
         }
     }
     
@@ -149,14 +149,14 @@ class JSONHolderManager {
                             let decodedAlbums = try decoder.decode([Todo].self, from: data)
                             completionHandler(JSONHolderRequestResult.Success(result: decodedAlbums))
                         } catch {
-                            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+                            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingtodosbyuserid".localized))
                         }
                     }
                 }
             }
             dataTask.resume()
         } else {
-            completionHandler(JSONHolderRequestResult.Failure(error: ""))
+            completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingtodosbyuserid".localized))
         }
     }
 }

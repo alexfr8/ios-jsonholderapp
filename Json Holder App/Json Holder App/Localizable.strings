@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Json Holder App
+
+  Created by Alejandro Fernández Ruiz on 24/11/2019.
+  Copyright © 2019 Alejandro Fernández Ruiz. All rights reserved.
+*/
+
+
+"networking.error.generic" = "Error happens when the system tried to retrieve data";
+"networking.error.downloadingusers" = "Error while fetching users";
+"networking.error.downloadingposts" = "Error while fetching posts";
+"networking.error.downloadingcommentsbypost" = "Error while fetching comments by user";
+"networking.error.downloadingalbumsbyuser" = "Error while fetching albums by user";
+"networking.error.downloadingphotosbyalbumid" = "Error while fetching photos by album";
+"networking.error.downloadingtodosbyuserid"= "Error whilet fetching todos by user";
