@@ -19,12 +19,12 @@ class BaseViewController: UIViewController {
     
     func showError(msg: String) {
         
-        let alert = UIAlertController(title: "error.alert.title".localized, msg,         preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "error.alert.title".localized, message: msg,         preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "error.alert.button.cancel", style: UIAlertActionStyle.default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "error.alert.button.cancel", style: UIAlertAction.Style.default, handler: { _ in
             //Cancel Action
         }))
-        
+    
         
         self.present(alert, animated: true, completion: nil)
     }
