@@ -49,7 +49,7 @@ class JSONHolderManager {
     func fetchPostsById(userId: Int, completionHandler: @escaping (JSONHolderRequestResult<[Post]>) -> Void) {
         let tail: String = "/posts?userId="
         
-        if let url = URL(string: String(format: "%@%@%@", baseURL,tail, userId)) {
+        if let url = URL(string: String(format: "%@%@%@", baseURL,tail, "\(userId)")) {
             let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 ui {
                     if let data = data {

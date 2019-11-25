@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="UserCollectionCell" id="xlM-Nv-MCc" customClass="UserCollectionCell" customModule="Json_Holder_App" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PostCollectionCell" id="xlM-Nv-MCc" customClass="PostCollectionCell" customModule="Json_Holder_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f1C-k1-nic">
@@ -28,16 +28,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="o4X-HC-cJl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nGE-WU-w5W" secondAttribute="leading" constant="2" id="2C5-EX-l9X"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o4X-HC-cJl" secondAttribute="bottom" constant="2" id="4tk-l1-Z1g"/>
                             <constraint firstItem="o4X-HC-cJl" firstAttribute="centerY" secondItem="nGE-WU-w5W" secondAttribute="centerY" id="DZb-Vv-iOR"/>
+                            <constraint firstItem="o4X-HC-cJl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nGE-WU-w5W" secondAttribute="top" constant="2" id="Jjw-NS-S9l"/>
                             <constraint firstItem="o4X-HC-cJl" firstAttribute="centerX" secondItem="nGE-WU-w5W" secondAttribute="centerX" id="M4K-S9-JZc"/>
-                            <constraint firstItem="o4X-HC-cJl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nGE-WU-w5W" secondAttribute="leading" constant="2" id="UfA-lM-tu4"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o4X-HC-cJl" secondAttribute="bottom" constant="2" id="eqi-Uv-49o"/>
-                            <constraint firstItem="o4X-HC-cJl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nGE-WU-w5W" secondAttribute="top" constant="2" id="jWz-R7-2fz"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o4X-HC-cJl" secondAttribute="trailing" constant="2" id="vLI-de-PNC"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o4X-HC-cJl" secondAttribute="trailing" constant="2" id="tgD-bA-VBb"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="nGE-WU-w5W" secondAttribute="trailing" constant="10" id="LTm-gT-DHv"/>
                     <constraint firstAttribute="bottom" secondItem="nGE-WU-w5W" secondAttribute="bottom" constant="10" id="RYC-3S-uBz"/>
@@ -47,8 +46,8 @@
             </collectionViewCellContentView>
             <size key="customSize" width="217" height="198"/>
             <connections>
-                <outlet property="bgView" destination="nGE-WU-w5W" id="h03-Xo-khw"/>
-                <outlet property="user" destination="o4X-HC-cJl" id="v4z-NP-CHk"/>
+                <outlet property="bgView" destination="nGE-WU-w5W" id="lig-IQ-eEv"/>
+                <outlet property="post" destination="o4X-HC-cJl" id="5Ea-PN-oPq"/>
             </connections>
             <point key="canvasLocation" x="234.05797101449278" y="88.392857142857139"/>
         </collectionViewCell>

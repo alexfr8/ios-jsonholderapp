@@ -14,7 +14,6 @@ import UIKit
 
 class MainWorker {
     
-    
     func getAllUsers(completionHandler: @escaping ([User], String) -> Void) {
         JSONHolderManager.shared.fetchUsers { (userResults) in
             switch userResults {
@@ -22,7 +21,6 @@ class MainWorker {
                 completionHandler(result,"")
             case .Failure(let error):
                 completionHandler([], error)
-                
             }
         }
     }
@@ -39,6 +37,7 @@ class MainWorker {
                 posts=result
             case .Failure(let error):
                 apiError=error
+                posts=[]
             }
             group.leave()
         }
@@ -50,17 +49,17 @@ class MainWorker {
                 todos = result
             case .Failure(let error):
                 apiError = error
-                group.leave()
+                todos=[]
             }
-            
-            group.notify(queue: .main) {
-                if (apiError?.isEmpty) != nil {
-                    completionHandler([],[], apiError ?? "networking.error.generic".localized)
-                } else {
-                    completionHandler(todos ?? [],posts ?? [],"")
-                }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            if (apiError?.isEmpty) != nil {
+                completionHandler([],[], apiError ?? "networking.error.generic".localized)
+            } else {
+                completionHandler(todos ?? [],posts ?? [],"")
             }
-            
         }
         
     }

@@ -20,19 +20,33 @@ enum Main {
         var userId: Int?
     }
     struct Response {
-        var user: [User]?
-        var posts: [Post]?
-        var todos: [Todo]?
+        var userSelected: User?
+        var postSelected: Post?
     }
     struct ViewModel {
-        var user: [User]?
+        var user: User?
         var posts: [Post]?
         var todos: [Todo]?
+        var selectedPost: Post?
+        var lblTodoTitle: String = "main.todolist.title".localized
+        var lblPostTitle: String = "main.postlist.title".localized
     }
     struct PostsViewModel {
         var postForUser : [Post]?
         var allUsers:[User]?
         var todosForUser: [Todo]?
+    }
+    
+    struct UserCellData {
+        var user: User?
+    }
+    
+    struct TodosCellData {
+        var todo: Todo?
+    }
+    
+    struct PostCellData {
+        var post: Post?
     }
   }
 }

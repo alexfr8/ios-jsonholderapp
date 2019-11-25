@@ -19,16 +19,21 @@ protocol MainBusinessLogic {
     func getUserCount() -> Int
     func getTodoCount() -> Int
     func getPostCount() -> Int
+    func getDataForUserCell(index: Int) -> Main.Models.UserCellData
+    func getDataForPostCell(index: Int) -> Main.Models.PostCellData
+    func getDataForTodoCell(index: Int) -> Main.Models.TodosCellData
+    func postSelected(index: IndexPath)
 }
 
 protocol MainDataStore {
     var userList: [User]? { get set }
     var todoList: [Todo]? { get set }
     var postList: [Post]? { get set }
-    
 }
 
 class MainInteractor: MainBusinessLogic, MainDataStore {
+    
+    
     
     var todoList: [Todo]?
     var postList: [Post]?
@@ -48,8 +53,8 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
         worker = MainWorker()
         worker?.getAllUsers(completionHandler: {[weak self] (userList, errorString) in
             if errorString.isEmpty {
-                let response = Main.Models.Response()
-                self?.presenter?.presentAllUser(response: response)
+                self?.userList = userList
+                self?.presenter?.presentAllUser()
             } else {
                 self?.presenter?.showError(msg: errorString)
             }
@@ -62,8 +67,9 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
             worker?.getPostByUserAndTodos(userId: user.id ?? 0, completionHandler: { [weak self] (todoList, postList, errorString) in
                 if errorString.isEmpty {
                     var response = Main.Models.Response()
-                    response.posts = postList
-                    response.todos = todoList
+                    response.userSelected = user
+                    self?.todoList = todoList
+                    self?.postList = postList
                     self?.presenter?.presentPostAndTodosForUserId(response: response)
                 } else {
                     self?.presenter?.showError(msg: errorString)
@@ -71,6 +77,13 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
             })
         }
     }
+    func postSelected(index: IndexPath) {
+        guard let destinationPost = postList?.getElement(index.row)  else {return}
+        var response: Main.Models.Response = Main.Models.Response()
+        response.postSelected = destinationPost
+        self.presenter?.prepareNavigationFor(response: response)
+    }
+    
     
     func getUserCount() -> Int {
         return userList?.count ?? 0
@@ -91,4 +104,27 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
     func getPostCount() -> Int {
         return postList?.count ?? 0
     }
+    
+    func getDataForUserCell(index: Int) -> Main.Models.UserCellData {
+        let user =  userList?.getElement(index)
+        var data = Main.Models.UserCellData()
+        data.user = user
+        return data
+    }
+    
+    func getDataForPostCell(index: Int) -> Main.Models.PostCellData {
+        let post =  postList?.getElement(index)
+        var data = Main.Models.PostCellData()
+        data.post = post
+        return data
+    }
+    
+    func getDataForTodoCell(index: Int) -> Main.Models.TodosCellData {
+        let todo =  todoList?.getElement(index)
+        var data = Main.Models.TodosCellData()
+        data.todo = todo
+        return data
+    }
+    
+    
 }

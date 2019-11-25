@@ -15,8 +15,10 @@ import UIKit
 protocol MainDisplayLogic: class {
     func setupView(viewModel: Main.Models.ViewModel)
     func showUsers()
-    func showPostForUser()
+    func showPostForUser(viewModel: Main.Models.ViewModel)
+    func navigateToPostComments( viewModel: Main.Models.ViewModel)
     func showError(msg: String)
+    
 }
 
 class MainViewController: BaseViewController {
@@ -33,7 +35,9 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var collectionTodos: UICollectionView!
     @IBOutlet weak var collectionPosts: UICollectionView!
     
+    @IBOutlet weak var lblPostTitle: UILabel!
     
+    @IBOutlet weak var lblTodoTitle: UILabel!
     var interactor: MainBusinessLogic?
     var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
     
@@ -79,24 +83,15 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.setupView()
         interactor?.getAllUsers()
     }
-    
 }
 
 extension MainViewController: MainDisplayLogic {
-    func showUsers() {
-        collectionUsers.reloadData()
-        collectionUsers.isHidden = false
-    }
-    
-    func showPostForUser() {
-        collectionPosts.reloadData()
-        collectionTodos.reloadData()
-        stackView.isHidden = false
-    }
-    
    
+    
+    
     
     func setupView(viewModel: Main.Models.ViewModel) {
         
@@ -109,16 +104,69 @@ extension MainViewController: MainDisplayLogic {
         self.lblWebsite.text = ""
         self.lblUserName.text = ""
         
+        setupFlowLayoutForUICollection(collection: collectionTodos)
+        setupFlowLayoutForUICollection(collection: collectionPosts)
+        setupFlowLayoutForUICollection(collection: collectionUsers)
+        
+        registerUserCollection()
+        registerPostCollection()
+        registerTodoCollection()
+    }
+    
+    func showUsers() {
+        collectionUsers.reloadData()
+        collectionUsers.isHidden = false
+    }
+    
+    func showPostForUser(viewModel: Main.Models.ViewModel) {
+        collectionPosts.reloadData()
+        collectionTodos.reloadData()
+        stackView.isHidden = false
+        self.lblName.text = viewModel.user?.name
+        self.lblEmail.text = viewModel.user?.email
+        self.lblPhone.text = viewModel.user?.phone
+        self.lblAddress.text = viewModel.user?.address?.city
+        self.lblWebsite.text = viewModel.user?.website
+        self.lblUserName.text = viewModel.user?.username
+        
+        self.lblTodoTitle.text = viewModel.lblTodoTitle
+        self.lblPostTitle.text = viewModel.lblPostTitle
+    }
+    
+    private func setupFlowLayoutForUICollection(collection: UICollectionView) {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-10, height: 190)
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        flowLayout.minimumInteritemSpacing = 0.0
+        collection.collectionViewLayout = flowLayout
+    }
+    
+    private func registerUserCollection() {
         collectionUsers.register(UINib(nibName: String(describing: UserCollectionCell.self), bundle: nil), forCellWithReuseIdentifier: UserCollectionCell.cellIdentifier)
         collectionUsers.backgroundColor = UIColor.clear
         collectionUsers.delegate = self
         collectionUsers.dataSource = self
     }
     
+    private func registerPostCollection() {
+        collectionPosts.register(UINib(nibName: String(describing: PostCollectionCell.self), bundle: nil), forCellWithReuseIdentifier: PostCollectionCell.cellIdentifier)
+        collectionPosts.backgroundColor = UIColor.clear
+        collectionPosts.delegate = self
+        collectionPosts.dataSource = self
+    }
     
+    private func registerTodoCollection() {
+        collectionTodos.register(UINib(nibName: String(describing: TodoCollectionCell.self), bundle: nil), forCellWithReuseIdentifier: TodoCollectionCell.cellIdentifier)
+        collectionTodos.backgroundColor = UIColor.clear
+        collectionTodos.delegate = self
+        collectionTodos.dataSource = self
+    }
     
-    func showError(msg: String) {
-        
+    //MARK: - NAVIGATION
+    
+    func navigateToPostComments(viewModel: Main.Models.ViewModel) {
+           
     }
 }
 
@@ -136,14 +184,53 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        if collectionView == collectionUsers {
+            return self.getCellForUser(index: indexPath, collectionView: collectionView)
+        } else if collectionView == collectionPosts {
+            return self.getCellForPost(index: indexPath, collectionView: collectionView)
+        } else {
+            return self.getCellForTodo(index: indexPath, collectionView: collectionView)
+        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == collectionUsers {
             self.interactor?.userSelected(userIndex: indexPath.row)
+        } else if collectionView == collectionPosts {
+            
         }
+    }
+    
+    private func getCellForUser(index: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCollectionCell.cellIdentifier, for: index) as? UserCollectionCell else {
+            return UICollectionViewCell()
+        }
+        
+        let cellData = self.interactor?.getDataForUserCell(index: index.row)
+        cell.updateUI(username: cellData?.user?.username ?? "unknown")
+        return cell
+    }
+    
+    private func getCellForPost(index: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionCell.cellIdentifier, for: index) as? PostCollectionCell else {
+            return UICollectionViewCell()
+        }
+        
+        let cellData = self.interactor?.getDataForPostCell(index: index.row)
+        cell.updateUI(postName: cellData?.post?.title ?? "unknown")
+        return cell
+    }
+    
+    private func getCellForTodo(index: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCollectionCell.cellIdentifier, for: index) as? TodoCollectionCell else {
+            return UICollectionViewCell()
+        }
+        
+        let cellData = self.interactor?.getDataForTodoCell(index: index.row)
+        cell.updateUI(username: cellData?.todo?.title ?? "unknown")
+        return cell
     }
     
 }

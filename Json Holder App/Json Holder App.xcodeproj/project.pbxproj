@@ -28,6 +28,11 @@
 		C134A9E2238B1E59005A63B9 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9E1238B1E59005A63B9 /* Array+extensions.swift */; };
 		C134A9E5238B1FD7005A63B9 /* UserCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9E4238B1FD7005A63B9 /* UserCollectionCell.swift */; };
 		C134A9E7238B1FEA005A63B9 /* UserCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C134A9E6238B1FEA005A63B9 /* UserCollectionCell.xib */; };
+		C13558C9238C4BA600DBAFF9 /* Colors+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558C8238C4BA600DBAFF9 /* Colors+extensions.swift */; };
+		C13558CE238C548E00DBAFF9 /* PostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13558CA238C548E00DBAFF9 /* PostCollectionCell.xib */; };
+		C13558CF238C548E00DBAFF9 /* TodoCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13558CB238C548E00DBAFF9 /* TodoCollectionCell.xib */; };
+		C13558D0238C548E00DBAFF9 /* PostCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558CC238C548E00DBAFF9 /* PostCollectionCell.swift */; };
+		C13558D1238C548E00DBAFF9 /* TodoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558CD238C548E00DBAFF9 /* TodoCollectionCell.swift */; };
 		C17B7708238AB57C008341D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B7707238AB57C008341D4 /* AppDelegate.swift */; };
 		C17B770A238AB57C008341D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B7709238AB57C008341D4 /* SceneDelegate.swift */; };
 		C17B7711238AB57D008341D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17B7710238AB57D008341D4 /* Assets.xcassets */; };
@@ -70,6 +75,11 @@
 		C134A9E1238B1E59005A63B9 /* Array+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extensions.swift"; sourceTree = "<group>"; };
 		C134A9E4238B1FD7005A63B9 /* UserCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionCell.swift; sourceTree = "<group>"; };
 		C134A9E6238B1FEA005A63B9 /* UserCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionCell.xib; sourceTree = "<group>"; };
+		C13558C8238C4BA600DBAFF9 /* Colors+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+extensions.swift"; sourceTree = "<group>"; };
+		C13558CA238C548E00DBAFF9 /* PostCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionCell.xib; sourceTree = "<group>"; };
+		C13558CB238C548E00DBAFF9 /* TodoCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCollectionCell.xib; sourceTree = "<group>"; };
+		C13558CC238C548E00DBAFF9 /* PostCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionCell.swift; sourceTree = "<group>"; };
+		C13558CD238C548E00DBAFF9 /* TodoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCollectionCell.swift; sourceTree = "<group>"; };
 		C17B7704238AB57C008341D4 /* Json Holder App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Json Holder App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17B7707238AB57C008341D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C17B7709238AB57C008341D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 			children = (
 				C134A9CB238AFB3B005A63B9 /* String+extension.swift */,
 				C134A9E1238B1E59005A63B9 /* Array+extensions.swift */,
+				C13558C8238C4BA600DBAFF9 /* Colors+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -146,6 +157,10 @@
 		C134A9E3238B1FBA005A63B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C13558CC238C548E00DBAFF9 /* PostCollectionCell.swift */,
+				C13558CA238C548E00DBAFF9 /* PostCollectionCell.xib */,
+				C13558CD238C548E00DBAFF9 /* TodoCollectionCell.swift */,
+				C13558CB238C548E00DBAFF9 /* TodoCollectionCell.xib */,
 				C134A9E4238B1FD7005A63B9 /* UserCollectionCell.swift */,
 				C134A9E6238B1FEA005A63B9 /* UserCollectionCell.xib */,
 			);
@@ -302,7 +317,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13558CF238C548E00DBAFF9 /* TodoCollectionCell.xib in Resources */,
 				C134A9E7238B1FEA005A63B9 /* UserCollectionCell.xib in Resources */,
+				C13558CE238C548E00DBAFF9 /* PostCollectionCell.xib in Resources */,
 				C17B7714238AB57D008341D4 /* LaunchScreen.storyboard in Resources */,
 				C134A9DE238B03EF005A63B9 /* MainStoryboard.storyboard in Resources */,
 				C134A9CE238AFB88005A63B9 /* Localizable.strings in Resources */,
@@ -333,12 +350,15 @@
 				C134A9DA238AFFA2005A63B9 /* MainModels.swift in Sources */,
 				C134A9E2238B1E59005A63B9 /* Array+extensions.swift in Sources */,
 				C17B7730238AEA04008341D4 /* Comment.swift in Sources */,
+				C13558D0238C548E00DBAFF9 /* PostCollectionCell.swift in Sources */,
 				C17B772B238AE8EA008341D4 /* JSONHolderManager.swift in Sources */,
 				C134A9BF238AEE30005A63B9 /* Company.swift in Sources */,
 				C17B7708238AB57C008341D4 /* AppDelegate.swift in Sources */,
+				C13558D1238C548E00DBAFF9 /* TodoCollectionCell.swift in Sources */,
 				C17B770A238AB57C008341D4 /* SceneDelegate.swift in Sources */,
 				C134A9E0238B1396005A63B9 /* BaseViewController.swift in Sources */,
 				C17B772E238AE93E008341D4 /* Post.swift in Sources */,
+				C13558C9238C4BA600DBAFF9 /* Colors+extensions.swift in Sources */,
 				C134A9D7238AFFA2005A63B9 /* MainPresenter.swift in Sources */,
 				C134A9CC238AFB3B005A63B9 /* String+extension.swift in Sources */,
 				C134A9E5238B1FD7005A63B9 /* UserCollectionCell.swift in Sources */,

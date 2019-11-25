@@ -13,38 +13,44 @@
 import UIKit
 
 protocol MainPresentationLogic {
-  func setupView(response: Main.Models.Response)
-  func presentAllUser(response: Main.Models.Response)
+    func setupView(response: Main.Models.Response)
+    func presentAllUser()
     func presentPostAndTodosForUserId(response: Main.Models.Response)
-  func showError(msg: String)
+    func prepareNavigationFor(response: Main.Models.Response)
+    func showError(msg: String)
 }
 
 class MainPresenter: MainPresentationLogic {
-
-  weak var viewController: MainDisplayLogic?
-  
-  // MARK: Setup and update view
-  
-  func setupView(response: Main.Models.Response) {
-         let viewModel = Main.Models.ViewModel()
-         viewController?.setupView(viewModel: viewModel)
-  }
     
-  func presentAllUser(response: Main.Models.Response) {
+    weak var viewController: MainDisplayLogic?
+    
+    // MARK: Setup and update view
+    
+    func setupView(response: Main.Models.Response) {
         let viewModel = Main.Models.ViewModel()
         viewController?.setupView(viewModel: viewModel)
- }
+    }
+    
+    func presentAllUser() {
+        viewController?.showUsers()
+    }
     
     
     func presentPostAndTodosForUserId(response: Main.Models.Response) {
-          
+        var model: Main.Models.ViewModel = Main.Models.ViewModel()
+        model.user = response.userSelected
+        self.viewController?.showPostForUser(viewModel: model)
     }
     
-    //MARK: Show error
     
+    // MARK: - PREPARE NAVIGATIONS
+    func prepareNavigationFor(response: Main.Models.Response) {
+        var model: Main.Models.ViewModel = Main.Models.ViewModel()
+        model.selectedPost = response.postSelected
+        self.viewController?.navigateToPostComments(viewModel: model)
+    }
+    // MARK: - SHOW ERRORS
     func showError(msg: String) {
-        
+        self.viewController?.showError(msg: msg)
     }
-    
-   
 }

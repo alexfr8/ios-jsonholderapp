@@ -8,13 +8,13 @@
 
 import UIKit
 
-class UserCollectionCell: UICollectionViewCell {
+class TodoCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var user: UILabel!
     @IBOutlet weak var bgView: UIView!
-
+    
     static var cellIdentifier: String {
-        return String(describing: UserCollectionCell.self)
+        return String(describing: TodoCollectionCell.self)
     }
 
     func updateUI(username: String) {
@@ -25,8 +25,7 @@ class UserCollectionCell: UICollectionViewCell {
 
     func applyStyle() {
        
-        user.textColor = UIColor.nearWhite
+        user.textColor = UIColor.greenPersonal
         bgView.backgroundColor = UIColor.orange
-      
     }
 }

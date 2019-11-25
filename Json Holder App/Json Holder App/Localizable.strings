@@ -7,6 +7,9 @@
 */
 
 
+"main.postlist.title"="Post list";
+"main.todolist.title"="Todo list";
+
 "networking.error.generic" = "Error happens when the system tried to retrieve data";
 "networking.error.downloadingusers" = "Error while fetching users";
 "networking.error.downloadingposts" = "Error while fetching posts";
@@ -14,3 +17,7 @@
 "networking.error.downloadingalbumsbyuser" = "Error while fetching albums by user";
 "networking.error.downloadingphotosbyalbumid" = "Error while fetching photos by album";
 "networking.error.downloadingtodosbyuserid"= "Error whilet fetching todos by user";
+
+"error.alert.title" = "Error"
+"error.alert.button.cancel" = "Cancel"
+
