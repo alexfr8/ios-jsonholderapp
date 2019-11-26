@@ -45,12 +45,13 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
     
     
     func setupView() {
+        worker = MainWorker()
         let response: Main.Models.Response = Main.Models.Response()
         presenter?.setupView(response: response)
     }
     
     func getAllUsers()  {
-        worker = MainWorker()
+        
         worker?.getAllUsers(completionHandler: {[weak self] (userList, errorString) in
             if errorString.isEmpty {
                 self?.userList = userList
@@ -62,7 +63,7 @@ class MainInteractor: MainBusinessLogic, MainDataStore {
     }
     
     func userSelected(userIndex: Int) {
-        worker = MainWorker()
+       
         if let user = userList?.getElement(userIndex) {
             worker?.getPostByUserAndTodos(userId: user.id ?? 0, completionHandler: { [weak self] (todoList, postList, errorString) in
                 if errorString.isEmpty {

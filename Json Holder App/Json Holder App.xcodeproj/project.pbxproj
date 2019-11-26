@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C12B7F84238DB2640029D78D /* XCTest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F83238DB2640029D78D /* XCTest+Extensions.swift */; };
 		C134A9B9238AEC3C005A63B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9B8238AEC3C005A63B9 /* User.swift */; };
 		C134A9BB238AEC97005A63B9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9BA238AEC97005A63B9 /* Address.swift */; };
 		C134A9BD238AECE1005A63B9 /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9BC238AECE1005A63B9 /* Geo.swift */; };
@@ -33,6 +34,10 @@
 		C13558CF238C548E00DBAFF9 /* TodoCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13558CB238C548E00DBAFF9 /* TodoCollectionCell.xib */; };
 		C13558D0238C548E00DBAFF9 /* PostCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558CC238C548E00DBAFF9 /* PostCollectionCell.swift */; };
 		C13558D1238C548E00DBAFF9 /* TodoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558CD238C548E00DBAFF9 /* TodoCollectionCell.swift */; };
+		C13558D9238C6DB100DBAFF9 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558D5238C6DB100DBAFF9 /* MainViewControllerTests.swift */; };
+		C13558DA238C6DB100DBAFF9 /* MainInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558D6238C6DB100DBAFF9 /* MainInteractorTests.swift */; };
+		C13558DB238C6DB100DBAFF9 /* MainWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558D7238C6DB100DBAFF9 /* MainWorkerTests.swift */; };
+		C13558DC238C6DB100DBAFF9 /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13558D8238C6DB100DBAFF9 /* MainPresenterTests.swift */; };
 		C17B7708238AB57C008341D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B7707238AB57C008341D4 /* AppDelegate.swift */; };
 		C17B770A238AB57C008341D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B7709238AB57C008341D4 /* SceneDelegate.swift */; };
 		C17B7711238AB57D008341D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17B7710238AB57D008341D4 /* Assets.xcassets */; };
@@ -54,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C12B7F83238DB2640029D78D /* XCTest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extensions.swift"; sourceTree = "<group>"; };
 		C134A9B8238AEC3C005A63B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C134A9BA238AEC97005A63B9 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C134A9BC238AECE1005A63B9 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
@@ -80,6 +86,10 @@
 		C13558CB238C548E00DBAFF9 /* TodoCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCollectionCell.xib; sourceTree = "<group>"; };
 		C13558CC238C548E00DBAFF9 /* PostCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionCell.swift; sourceTree = "<group>"; };
 		C13558CD238C548E00DBAFF9 /* TodoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCollectionCell.swift; sourceTree = "<group>"; };
+		C13558D5238C6DB100DBAFF9 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
+		C13558D6238C6DB100DBAFF9 /* MainInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorTests.swift; sourceTree = "<group>"; };
+		C13558D7238C6DB100DBAFF9 /* MainWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorkerTests.swift; sourceTree = "<group>"; };
+		C13558D8238C6DB100DBAFF9 /* MainPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTests.swift; sourceTree = "<group>"; };
 		C17B7704238AB57C008341D4 /* Json Holder App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Json Holder App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17B7707238AB57C008341D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C17B7709238AB57C008341D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C12B7F82238DB24E0029D78D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C12B7F83238DB2640029D78D /* XCTest+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C134A9C6238AF342005A63B9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +185,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C13558D4238C6D6B00DBAFF9 /* MainSceneTest */ = {
+			isa = PBXGroup;
+			children = (
+				C13558D5238C6DB100DBAFF9 /* MainViewControllerTests.swift */,
+				C13558D6238C6DB100DBAFF9 /* MainInteractorTests.swift */,
+				C13558D7238C6DB100DBAFF9 /* MainWorkerTests.swift */,
+				C13558D8238C6DB100DBAFF9 /* MainPresenterTests.swift */,
+			);
+			path = MainSceneTest;
+			sourceTree = "<group>";
+		};
 		C17B76FB238AB57B008341D4 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +234,8 @@
 		C17B771D238AB57D008341D4 /* Json Holder AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				C12B7F82238DB24E0029D78D /* Extensions */,
+				C13558D4238C6D6B00DBAFF9 /* MainSceneTest */,
 				C17B771E238AB57D008341D4 /* Json_Holder_AppTests.swift */,
 				C17B7720238AB57E008341D4 /* Info.plist */,
 			);
@@ -375,6 +406,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C17B771F238AB57D008341D4 /* Json_Holder_AppTests.swift in Sources */,
+				C13558DA238C6DB100DBAFF9 /* MainInteractorTests.swift in Sources */,
+				C12B7F84238DB2640029D78D /* XCTest+Extensions.swift in Sources */,
+				C13558DC238C6DB100DBAFF9 /* MainPresenterTests.swift in Sources */,
+				C13558DB238C6DB100DBAFF9 /* MainWorkerTests.swift in Sources */,
+				C13558D9238C6DB100DBAFF9 /* MainViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

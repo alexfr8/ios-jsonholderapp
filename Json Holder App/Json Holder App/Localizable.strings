@@ -18,6 +18,6 @@
 "networking.error.downloadingphotosbyalbumid" = "Error while fetching photos by album";
 "networking.error.downloadingtodosbyuserid"= "Error whilet fetching todos by user";
 
-"error.alert.title" = "Error"
-"error.alert.button.cancel" = "Cancel"
+"error.alert.title" = "Error";
+"error.alert.button.cancel" = "Cancel";
 
