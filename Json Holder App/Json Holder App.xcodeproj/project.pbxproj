@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C12B7F84238DB2640029D78D /* XCTest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F83238DB2640029D78D /* XCTest+Extensions.swift */; };
+		C12B7F8C238DBD220029D78D /* PostShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F86238DBD220029D78D /* PostShowPresenter.swift */; };
+		C12B7F8D238DBD220029D78D /* PostShowWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F87238DBD220029D78D /* PostShowWorker.swift */; };
+		C12B7F8E238DBD220029D78D /* PostShowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F88238DBD220029D78D /* PostShowRouter.swift */; };
+		C12B7F8F238DBD220029D78D /* PostShowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F89238DBD220029D78D /* PostShowModels.swift */; };
+		C12B7F90238DBD220029D78D /* PostShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F8A238DBD220029D78D /* PostShowViewController.swift */; };
+		C12B7F91238DBD220029D78D /* PostShowInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F8B238DBD220029D78D /* PostShowInteractor.swift */; };
+		C12B7F93238DBD5A0029D78D /* PostShowStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B7F92238DBD5A0029D78D /* PostShowStoryboard.storyboard */; };
 		C134A9B9238AEC3C005A63B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9B8238AEC3C005A63B9 /* User.swift */; };
 		C134A9BB238AEC97005A63B9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9BA238AEC97005A63B9 /* Address.swift */; };
 		C134A9BD238AECE1005A63B9 /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9BC238AECE1005A63B9 /* Geo.swift */; };
@@ -60,6 +67,13 @@
 
 /* Begin PBXFileReference section */
 		C12B7F83238DB2640029D78D /* XCTest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extensions.swift"; sourceTree = "<group>"; };
+		C12B7F86238DBD220029D78D /* PostShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowPresenter.swift; sourceTree = "<group>"; };
+		C12B7F87238DBD220029D78D /* PostShowWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowWorker.swift; sourceTree = "<group>"; };
+		C12B7F88238DBD220029D78D /* PostShowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowRouter.swift; sourceTree = "<group>"; };
+		C12B7F89238DBD220029D78D /* PostShowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowModels.swift; sourceTree = "<group>"; };
+		C12B7F8A238DBD220029D78D /* PostShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowViewController.swift; sourceTree = "<group>"; };
+		C12B7F8B238DBD220029D78D /* PostShowInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowInteractor.swift; sourceTree = "<group>"; };
+		C12B7F92238DBD5A0029D78D /* PostShowStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostShowStoryboard.storyboard; sourceTree = "<group>"; };
 		C134A9B8238AEC3C005A63B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C134A9BA238AEC97005A63B9 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C134A9BC238AECE1005A63B9 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
@@ -130,6 +144,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C12B7F85238DBCDA0029D78D /* PostShowScene */ = {
+			isa = PBXGroup;
+			children = (
+				C12B7F86238DBD220029D78D /* PostShowPresenter.swift */,
+				C12B7F87238DBD220029D78D /* PostShowWorker.swift */,
+				C12B7F88238DBD220029D78D /* PostShowRouter.swift */,
+				C12B7F89238DBD220029D78D /* PostShowModels.swift */,
+				C12B7F8A238DBD220029D78D /* PostShowViewController.swift */,
+				C12B7F8B238DBD220029D78D /* PostShowInteractor.swift */,
+				C12B7F92238DBD5A0029D78D /* PostShowStoryboard.storyboard */,
+			);
+			path = PostShowScene;
+			sourceTree = "<group>";
+		};
 		C134A9C6238AF342005A63B9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +179,7 @@
 		C134A9CF238AFF55005A63B9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C12B7F85238DBCDA0029D78D /* PostShowScene */,
 				C134A9D0238AFF79005A63B9 /* MainScene */,
 				C134A9DF238B1396005A63B9 /* BaseViewController.swift */,
 			);
@@ -352,6 +381,7 @@
 				C134A9E7238B1FEA005A63B9 /* UserCollectionCell.xib in Resources */,
 				C13558CE238C548E00DBAFF9 /* PostCollectionCell.xib in Resources */,
 				C17B7714238AB57D008341D4 /* LaunchScreen.storyboard in Resources */,
+				C12B7F93238DBD5A0029D78D /* PostShowStoryboard.storyboard in Resources */,
 				C134A9DE238B03EF005A63B9 /* MainStoryboard.storyboard in Resources */,
 				C134A9CE238AFB88005A63B9 /* Localizable.strings in Resources */,
 				C17B7711238AB57D008341D4 /* Assets.xcassets in Resources */,
@@ -372,12 +402,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12B7F90238DBD220029D78D /* PostShowViewController.swift in Sources */,
 				C134A9D8238AFFA2005A63B9 /* MainWorker.swift in Sources */,
 				C134A9C5238AEEAF005A63B9 /* Album.swift in Sources */,
 				C134A9C3238AEE8D005A63B9 /* Photo.swift in Sources */,
 				C134A9C1238AEE5B005A63B9 /* Todo.swift in Sources */,
+				C12B7F8F238DBD220029D78D /* PostShowModels.swift in Sources */,
+				C12B7F8D238DBD220029D78D /* PostShowWorker.swift in Sources */,
 				C134A9C8238AF36D005A63B9 /* Utils.swift in Sources */,
 				C134A9DC238AFFA2005A63B9 /* MainInteractor.swift in Sources */,
+				C12B7F8C238DBD220029D78D /* PostShowPresenter.swift in Sources */,
 				C134A9DA238AFFA2005A63B9 /* MainModels.swift in Sources */,
 				C134A9E2238B1E59005A63B9 /* Array+extensions.swift in Sources */,
 				C17B7730238AEA04008341D4 /* Comment.swift in Sources */,
@@ -389,8 +423,10 @@
 				C17B770A238AB57C008341D4 /* SceneDelegate.swift in Sources */,
 				C134A9E0238B1396005A63B9 /* BaseViewController.swift in Sources */,
 				C17B772E238AE93E008341D4 /* Post.swift in Sources */,
+				C12B7F91238DBD220029D78D /* PostShowInteractor.swift in Sources */,
 				C13558C9238C4BA600DBAFF9 /* Colors+extensions.swift in Sources */,
 				C134A9D7238AFFA2005A63B9 /* MainPresenter.swift in Sources */,
+				C12B7F8E238DBD220029D78D /* PostShowRouter.swift in Sources */,
 				C134A9CC238AFB3B005A63B9 /* String+extension.swift in Sources */,
 				C134A9E5238B1FD7005A63B9 /* UserCollectionCell.swift in Sources */,
 				C134A9BB238AEC97005A63B9 /* Address.swift in Sources */,

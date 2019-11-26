@@ -47,7 +47,7 @@ class MainPresenter: MainPresentationLogic {
     func prepareNavigationFor(response: Main.Models.Response) {
         var model: Main.Models.ViewModel = Main.Models.ViewModel()
         model.selectedPost = response.postSelected
-        self.viewController?.navigateToPostComments(viewModel: model)
+        self.viewController?.showCommentsForPost(viewModel: model)
     }
     // MARK: - SHOW ERRORS
     func showError(msg: String) {

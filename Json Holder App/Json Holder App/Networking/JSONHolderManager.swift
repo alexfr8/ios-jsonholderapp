@@ -69,7 +69,7 @@ class JSONHolderManager {
         }
     }
     
-    func fetchCommentsByPostId(postId: Int, completionHandler: @escaping (JSONHolderRequestResult<[Post]>) -> Void) {
+    func fetchCommentsByPostId(postId: Int, completionHandler: @escaping (JSONHolderRequestResult<[Comment]>) -> Void) {
         let tail: String = "/comments?postId="
         
         if let url = URL(string: String(format: "%@%@%@", baseURL, tail, "\(postId)")) {
@@ -78,8 +78,8 @@ class JSONHolderManager {
                     if let data = data {
                         let decoder = JSONDecoder()
                         do {
-                            let decodedPosts = try decoder.decode([Post].self, from: data)
-                            completionHandler(JSONHolderRequestResult.Success(result: decodedPosts))
+                            let decodedComments = try decoder.decode([Comment].self, from: data)
+                            completionHandler(JSONHolderRequestResult.Success(result: decodedComments))
                         } catch {
                             completionHandler(JSONHolderRequestResult.Failure(error: "networking.error.downloadingcommentsbypost".localized))
                         }

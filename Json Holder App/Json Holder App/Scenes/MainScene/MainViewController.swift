@@ -16,8 +16,8 @@ protocol MainDisplayLogic: class {
     func setupView(viewModel: Main.Models.ViewModel)
     func showUsers()
     func showPostForUser(viewModel: Main.Models.ViewModel)
-    func navigateToPostComments( viewModel: Main.Models.ViewModel)
     func showError(msg: String)
+    func showCommentsForPost(viewModel: Main.Models.ViewModel)
     
 }
 
@@ -89,9 +89,7 @@ class MainViewController: BaseViewController {
 }
 
 extension MainViewController: MainDisplayLogic {
-   
-    
-    
+
     
     func setupView(viewModel: Main.Models.ViewModel) {
         
@@ -163,11 +161,7 @@ extension MainViewController: MainDisplayLogic {
         collectionTodos.dataSource = self
     }
     
-    //MARK: - NAVIGATION
-    
-    func navigateToPostComments(viewModel: Main.Models.ViewModel) {
-           
-    }
+  
 }
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
@@ -199,7 +193,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == collectionUsers {
             self.interactor?.userSelected(userIndex: indexPath.row)
         } else if collectionView == collectionPosts {
-            
+            self.interactor?.postSelected(index: indexPath)
         }
     }
     
@@ -231,6 +225,15 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cellData = self.interactor?.getDataForTodoCell(index: index.row)
         cell.updateUI(username: cellData?.todo?.title ?? "unknown")
         return cell
+    }
+    
+    // MARK: - NAVIGATION
+    
+    func showCommentsForPost(viewModel: Main.Models.ViewModel) {
+//        if let router = self.router, router.responds(to: Selector(("navigateToPostComments:"))) {
+//            router.navigateToPostComments(viewModel: viewModel)
+//        }
+        self.router?.navigateToPostComments(viewModel: viewModel)
     }
     
 }

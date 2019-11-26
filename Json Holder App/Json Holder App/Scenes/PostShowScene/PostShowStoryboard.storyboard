@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JI6-VG-HxM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Post Show View Controller-->
+        <scene sceneID="tBD-Yn-3W7">
+            <objects>
+                <viewController id="JI6-VG-HxM" customClass="PostShowViewController" customModule="Json_Holder_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ctN-1P-Ffo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLb-J1-VgZ">
+                                <rect key="frame" x="52" y="117" width="310.5" height="672"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgm-dU-nKO">
+                                        <rect key="frame" x="2" y="56" width="306.5" height="614"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clo-cr-QnR">
+                                        <rect key="frame" x="255.5" y="16" width="39" height="30"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="btnCloseAction:" destination="JI6-VG-HxM" eventType="touchUpInside" id="WRh-yQ-lg0"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGj-1Z-Cow">
+                                        <rect key="frame" x="16" y="16" width="42" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="wgm-dU-nKO" firstAttribute="leading" secondItem="nLb-J1-VgZ" secondAttribute="leading" constant="2" id="3Ym-U4-QTH"/>
+                                    <constraint firstItem="PGj-1Z-Cow" firstAttribute="bottom" secondItem="Clo-cr-QnR" secondAttribute="bottom" id="5RA-eV-awT"/>
+                                    <constraint firstAttribute="bottom" secondItem="wgm-dU-nKO" secondAttribute="bottom" constant="2" id="958-ir-vUK"/>
+                                    <constraint firstItem="Clo-cr-QnR" firstAttribute="top" secondItem="nLb-J1-VgZ" secondAttribute="top" constant="16" id="CIa-Ac-YCh"/>
+                                    <constraint firstItem="PGj-1Z-Cow" firstAttribute="leading" secondItem="nLb-J1-VgZ" secondAttribute="leading" constant="16" id="His-jD-Hvb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Clo-cr-QnR" secondAttribute="trailing" constant="16" id="UcH-Pg-eo8"/>
+                                    <constraint firstAttribute="trailing" secondItem="wgm-dU-nKO" secondAttribute="trailing" constant="2" id="k2s-KK-h2j"/>
+                                    <constraint firstItem="wgm-dU-nKO" firstAttribute="top" secondItem="Clo-cr-QnR" secondAttribute="bottom" constant="10" id="unL-HE-gDv"/>
+                                    <constraint firstItem="PGj-1Z-Cow" firstAttribute="top" secondItem="Clo-cr-QnR" secondAttribute="top" id="vSk-3v-P8V"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nLb-J1-VgZ" firstAttribute="centerY" secondItem="1FI-Bw-85J" secondAttribute="centerY" id="9Z6-Mm-fIb"/>
+                            <constraint firstItem="nLb-J1-VgZ" firstAttribute="height" secondItem="ctN-1P-Ffo" secondAttribute="height" multiplier="0.75" id="EGg-iB-4Rt"/>
+                            <constraint firstItem="nLb-J1-VgZ" firstAttribute="centerX" secondItem="1FI-Bw-85J" secondAttribute="centerX" id="p93-J4-2fj"/>
+                            <constraint firstItem="nLb-J1-VgZ" firstAttribute="width" secondItem="ctN-1P-Ffo" secondAttribute="width" multiplier="0.75" id="uLU-1B-6gr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1FI-Bw-85J"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnClose" destination="Clo-cr-QnR" id="1he-y5-fRG"/>
+                        <outlet property="lblPost" destination="PGj-1Z-Cow" id="pq6-MX-3oL"/>
+                        <outlet property="tableView" destination="wgm-dU-nKO" id="jFG-1j-Ooo"/>
+                        <outlet property="viewContainer" destination="nLb-J1-VgZ" id="Gmr-ky-kNV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5t-2n-bpC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="174" y="96"/>
+        </scene>
+    </scenes>
+</document>

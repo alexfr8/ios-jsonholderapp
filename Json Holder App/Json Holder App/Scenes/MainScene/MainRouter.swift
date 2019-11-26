@@ -12,46 +12,65 @@
 
 import UIKit
 
-@objc protocol MainRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+protocol MainRoutingLogic {
+    func navigateToPostComments( viewModel: Main.Models.ViewModel)
 }
 
 protocol MainDataPassing {
-  var dataStore: MainDataStore? { get }
+    var dataStore: MainDataStore? { get set }
 }
 
 class MainRouter: NSObject, MainRoutingLogic, MainDataPassing {
-  weak var viewController: MainViewController?
-  var dataStore: MainDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: MainViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: MainDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    
+    
+    weak var viewController: MainViewController?
+    var dataStore: MainDataStore?
+    
+    // MARK: Routing
+    
+    
+    func navigateToPostComments(viewModel: Main.Models.ViewModel) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "PostShowStoryboard", bundle: nil)
+        if let modalViewController = storyboard.instantiateInitialViewController() as? PostShowViewController {
+            modalViewController.modalPresentationStyle = .overCurrentContext
+            modalViewController.router?.dataStore?.postData = viewModel.selectedPost
+            
+            
+            
+            viewController?.present(modalViewController, animated: true, completion: nil)
+            
+            
+          
+        }
+       
+        
+    }
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    //{
+    //  if let segue = segue {
+    //    let destinationVC = segue.destination as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //  } else {
+    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
+    //  }
+    //}
+    
+    // MARK: Navigation
+    
+    //func navigateToSomewhere(source: MainViewController, destination: SomewhereViewController)
+    //{
+    //  source.show(destination, sender: nil)
+    //}
+    
+    // MARK: Passing data
+    
+    //func passDataToSomewhere(source: MainDataStore, destination: inout SomewhereDataStore)
+    //{
+    //  destination.name = source.name
+    //}
 }
