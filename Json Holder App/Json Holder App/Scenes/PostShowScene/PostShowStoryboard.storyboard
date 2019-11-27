@@ -21,6 +21,59 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgm-dU-nKO">
                                         <rect key="frame" x="2" y="56" width="306.5" height="614"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="145" id="WD1-G7-Mnq" customClass="CommentTableCell" customModule="Json_Holder_App" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="306.5" height="145"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WD1-G7-Mnq" id="xTY-Ve-IMx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="306.5" height="145"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVG-hu-faW" userLabel="lblEmail">
+                                                            <rect key="frame" x="268" y="5" width="33.5" height="25"/>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYU-WZ-cRJ" userLabel="lblName">
+                                                            <rect key="frame" x="0.0" y="5" width="33.5" height="25"/>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3R-J1-UBw" userLabel="lblBody">
+                                                            <rect key="frame" x="0.0" y="40" width="301.5" height="97"/>
+                                                            <string key="text">quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione</string>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="c3R-J1-UBw" firstAttribute="trailing" secondItem="QVG-hu-faW" secondAttribute="trailing" id="1ow-oX-8J5"/>
+                                                        <constraint firstItem="QVG-hu-faW" firstAttribute="bottom" secondItem="jYU-WZ-cRJ" secondAttribute="bottom" id="G32-QL-uvF"/>
+                                                        <constraint firstAttribute="bottom" secondItem="c3R-J1-UBw" secondAttribute="bottom" constant="8" id="Icb-BL-wga"/>
+                                                        <constraint firstAttribute="trailing" secondItem="QVG-hu-faW" secondAttribute="trailing" constant="5" id="Iel-bD-GAH"/>
+                                                        <constraint firstItem="c3R-J1-UBw" firstAttribute="top" secondItem="QVG-hu-faW" secondAttribute="bottom" constant="10" id="JJw-rQ-4eS"/>
+                                                        <constraint firstItem="QVG-hu-faW" firstAttribute="top" secondItem="xTY-Ve-IMx" secondAttribute="top" constant="5" id="PbH-Ef-qZz"/>
+                                                        <constraint firstItem="QVG-hu-faW" firstAttribute="leading" secondItem="xTY-Ve-IMx" secondAttribute="leading" constant="268" id="S2j-07-9KZ"/>
+                                                        <constraint firstItem="jYU-WZ-cRJ" firstAttribute="leading" secondItem="xTY-Ve-IMx" secondAttribute="leading" id="We2-Da-B2X"/>
+                                                        <constraint firstItem="QVG-hu-faW" firstAttribute="top" secondItem="jYU-WZ-cRJ" secondAttribute="top" id="rYv-iQ-Dyh"/>
+                                                        <constraint firstItem="c3R-J1-UBw" firstAttribute="leading" secondItem="jYU-WZ-cRJ" secondAttribute="leading" id="t0v-8l-i56"/>
+                                                        <constraint firstItem="QVG-hu-faW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jYU-WZ-cRJ" secondAttribute="trailing" constant="10" id="yu9-7j-e8B"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="lblBody" destination="c3R-J1-UBw" id="5dy-Kl-pBw"/>
+                                                    <outlet property="lblEmail" destination="QVG-hu-faW" id="rzc-Ro-UbA"/>
+                                                    <outlet property="lblName" destination="jYU-WZ-cRJ" id="WmL-L5-clx"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="JI6-VG-HxM" id="Caq-5z-Ehp"/>
+                                            <outlet property="delegate" destination="JI6-VG-HxM" id="xEK-Ur-UVD"/>
+                                        </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clo-cr-QnR">
                                         <rect key="frame" x="255.5" y="16" width="39" height="30"/>
@@ -29,9 +82,9 @@
                                             <action selector="btnCloseAction:" destination="JI6-VG-HxM" eventType="touchUpInside" id="WRh-yQ-lg0"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGj-1Z-Cow">
-                                        <rect key="frame" x="16" y="16" width="42" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGj-1Z-Cow">
+                                        <rect key="frame" x="16" y="16" width="29" height="30"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -44,6 +97,7 @@
                                     <constraint firstItem="Clo-cr-QnR" firstAttribute="top" secondItem="nLb-J1-VgZ" secondAttribute="top" constant="16" id="CIa-Ac-YCh"/>
                                     <constraint firstItem="PGj-1Z-Cow" firstAttribute="leading" secondItem="nLb-J1-VgZ" secondAttribute="leading" constant="16" id="His-jD-Hvb"/>
                                     <constraint firstAttribute="trailing" secondItem="Clo-cr-QnR" secondAttribute="trailing" constant="16" id="UcH-Pg-eo8"/>
+                                    <constraint firstItem="Clo-cr-QnR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PGj-1Z-Cow" secondAttribute="trailing" constant="10" id="j0X-09-I2V"/>
                                     <constraint firstAttribute="trailing" secondItem="wgm-dU-nKO" secondAttribute="trailing" constant="2" id="k2s-KK-h2j"/>
                                     <constraint firstItem="wgm-dU-nKO" firstAttribute="top" secondItem="Clo-cr-QnR" secondAttribute="bottom" constant="10" id="unL-HE-gDv"/>
                                     <constraint firstItem="PGj-1Z-Cow" firstAttribute="top" secondItem="Clo-cr-QnR" secondAttribute="top" id="vSk-3v-P8V"/>
@@ -68,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5t-2n-bpC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="96"/>
+            <point key="canvasLocation" x="173.91304347826087" y="95.758928571428569"/>
         </scene>
     </scenes>
 </document>

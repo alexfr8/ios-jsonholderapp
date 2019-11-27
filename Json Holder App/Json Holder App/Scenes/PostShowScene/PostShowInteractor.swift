@@ -14,16 +14,23 @@ import UIKit
 
 protocol PostShowBusinessLogic {
     func setupView()
+    func closeDialog()
+    func getComments()
+    func getCommentCount() -> Int
+    func getDataForCommentCell(index: Int) -> PostShow.Models.CommentCellData
 }
 
 protocol PostShowDataStore {
     //var name: String { get set }
     var postData: Post? {get set}
+    var commentList: [Comment]? {get set}
 }
 
 class PostShowInteractor: PostShowBusinessLogic, PostShowDataStore {
+   
+
     var postData: Post?
-    
+    var commentList: [Comment]?
     
     var presenter: PostShowPresentationLogic?
     var worker: PostShowWorker?
@@ -31,19 +38,42 @@ class PostShowInteractor: PostShowBusinessLogic, PostShowDataStore {
     
     // MARK: Do something
     
-    //  func doSomething(request: PostShow.Something.Request)
-    //  {
-    //    worker = PostShowWorker()
-    //    worker?.doSomeWork()
-    //
-    //    let response = PostShow.Something.Response()
-    //    presenter?.presentSomething(response: response)
-    //  }
-    //
     func setupView() {
         worker = PostShowWorker()
         let response: PostShow.Models.Response = PostShow.Models.Response()
         presenter?.setupView(response: response)
     }
     
+    func closeDialog() {
+        presenter?.makeDismiss()
+    }
+    
+    func getComments() {
+        worker?.getCommentsForPost(postId: self.postData?.id ?? 0, completionHandler: { (responseComments, errorString) in
+            if errorString.isEmpty {
+                self.commentList = responseComments
+                self.presenter?.reloadTable()
+            } else {
+                self.presenter?.showError(msg: errorString)
+            }
+        })
+        var response: PostShow.Models.Response = PostShow.Models.Response()
+        response.postSelected = self.postData
+        self.presenter?.setupPost(response: response)
+    }
+       
+    //MARK: - METHOD TO POPULATE CELLS
+       
+       func getCommentCount() -> Int {
+           return commentList?.count ?? 0
+       }
+       
+       func getDataForCommentCell(index: Int) -> PostShow.Models.CommentCellData {
+           var data :PostShow.Models.CommentCellData = PostShow.Models.CommentCellData()
+           data.name = commentList?.getElement(index)?.name
+           data.email = commentList?.getElement(index)?.email
+           data.body = commentList?.getElement(index)?.body
+           
+           return data
+       }
 }

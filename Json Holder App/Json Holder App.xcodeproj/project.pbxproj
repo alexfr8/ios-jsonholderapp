@@ -136,6 +136,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C12B0D33238EFE4700E1B780 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C12B7F82238DB24E0029D78D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +154,7 @@
 		C12B7F85238DBCDA0029D78D /* PostShowScene */ = {
 			isa = PBXGroup;
 			children = (
+				C12B0D33238EFE4700E1B780 /* View */,
 				C12B7F86238DBD220029D78D /* PostShowPresenter.swift */,
 				C12B7F87238DBD220029D78D /* PostShowWorker.swift */,
 				C12B7F88238DBD220029D78D /* PostShowRouter.swift */,

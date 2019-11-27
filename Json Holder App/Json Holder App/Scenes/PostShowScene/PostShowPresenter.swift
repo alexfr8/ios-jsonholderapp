@@ -14,24 +14,46 @@ import UIKit
 
 protocol PostShowPresentationLogic
 {
-  func setupView(response: PostShow.Models.Response)
+    func setupView(response: PostShow.Models.Response)
+    func makeDismiss()
+    func showError(msg: String)
+    func reloadTable()
+    func setupPost(response:  PostShow.Models.Response)
 }
 
 class PostShowPresenter: PostShowPresentationLogic
 {
     
     
-  weak var viewController: PostShowDisplayLogic?
-  
-  // MARK: MANAGE PRESENTATION LAYER
+    
+    
+    
+    weak var viewController: PostShowDisplayLogic?
+    
+    // MARK: MANAGE PRESENTATION LAYER
     
     func setupView(response:  PostShow.Models.Response) {
-      let viewModel = PostShow.Models.ViewModel()
-      viewController?.setupView(viewModel: viewModel)
+        let viewModel = PostShow.Models.ViewModel()
+        viewController?.setupView(viewModel: viewModel)
     }
-//  func presentSomething(response: PostShow.Something.Response)
-//  {
-//    let viewModel = PostShow.Something.ViewModel()
-//    viewController?.displaySomething(viewModel: viewModel)
-//  }
+    
+    func setupPost(response: PostShow.Models.Response) {
+        var viewModel:PostShow.Models.ViewModel = PostShow.Models.ViewModel()
+        viewModel.title = response.postSelected?.title
+        self.viewController?.showPost(viewModel: viewModel)
+    }
+    
+    func reloadTable() {
+        self.viewController?.reloadTable()
+    }
+    
+     // MARK: - PREPARE NAVIGATIONS
+    func makeDismiss() {
+        viewController?.doClose()
+    }
+    
+     // MARK: - SHOW ERRORS
+       func showError(msg: String) {
+           self.viewController?.showError(msg: msg)
+       }
 }

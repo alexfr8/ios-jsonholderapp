@@ -230,9 +230,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     // MARK: - NAVIGATION
     
     func showCommentsForPost(viewModel: Main.Models.ViewModel) {
-//        if let router = self.router, router.responds(to: Selector(("navigateToPostComments:"))) {
-//            router.navigateToPostComments(viewModel: viewModel)
-//        }
         self.router?.navigateToPostComments(viewModel: viewModel)
     }
     

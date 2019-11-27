@@ -21,6 +21,10 @@ extension UIColor {
   class var grayPersonal: UIColor {
     return UIColor(white: 232.0 / 255.0, alpha: 1.0)
   }
+    
+    class var blackTraslucid: UIColor {
+        return UIColor(white: 0 / 255.0, alpha: 0.4)
+    }
 
   
 

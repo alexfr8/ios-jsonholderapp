@@ -14,6 +14,10 @@ import UIKit
 
 protocol PostShowDisplayLogic: class {
     func setupView(viewModel: PostShow.Models.ViewModel)
+    func doClose()
+    func showPost(viewModel: PostShow.Models.ViewModel)
+    func showError(msg: String)
+    func reloadTable()
 }
 
 class PostShowViewController: BaseViewController{
@@ -57,15 +61,15 @@ class PostShowViewController: BaseViewController{
     
     // MARK: Routing
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        if let scene = segue.identifier {
-//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-//            if let router = router, router.responds(to: selector) {
-//                router.perform(selector, with: segue)
-//            }
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    //    {
+    //        if let scene = segue.identifier {
+    //            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+    //            if let router = router, router.responds(to: selector) {
+    //                router.perform(selector, with: segue)
+    //            }
+    //        }
+    //    }
     
     // MARK: View lifecycle
     
@@ -81,23 +85,83 @@ class PostShowViewController: BaseViewController{
     //@IBOutlet weak var nameTextField: UITextField!
     
     @IBAction func btnCloseAction(_ sender: Any) {
+        interactor?.closeDialog()
     }
     
-//    func doSomething()
-//    {
-//        let request = PostShow.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
-//
-
 }
 
 extension PostShowViewController :  PostShowDisplayLogic  {
+
+    
     func setupView(viewModel: PostShow.Models.ViewModel) {
         
-        view.backgroundColor = UIColor.clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CommentTableCell.self, forCellReuseIdentifier: "CommentTableCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        view.backgroundColor = UIColor.blackTraslucid
         view.isOpaque = false
+        
+        self.interactor?.getComments()
+        
     }
     
+    func showPost(viewModel: PostShow.Models.ViewModel) {
+        self.lblPost.text = viewModel.title
+    }
+    func doClose() {
+        router?.performCloseNavigation()
+    }
+}
+
+extension PostShowViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return interactor?.getCommentCount() ?? 0
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableCell.cellIdentifier) as? CommentTableCell else {
+            return UITableViewCell()
+        }
+        
+        let commentData: PostShow.Models.CommentCellData = self.interactor?.getDataForCommentCell(index: indexPath.row) ?? PostShow.Models.CommentCellData()
+        cell.updateUI(data: commentData)
+        
+        return cell
+    }
+    
+    func reloadTable() {
+        self.tableView.reloadData()
+    }
+}
+
+
+
+class CommentTableCell: UITableViewCell {
+
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblBody: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        setupView()
+    }
+
+   static var cellIdentifier: String {
+        return String(describing: CommentTableCell.self)
+    }
+
+    func setupView() {
+        selectionStyle = .none
+    }
+
+    func updateUI(data: PostShow.Models.CommentCellData) {
+      
+        self.lblEmail.text = data.email
+        self.lblName.text = data.name
+        self.lblBody.text = data.body
+    }
+
 }
