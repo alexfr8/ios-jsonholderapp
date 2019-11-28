@@ -97,7 +97,7 @@ extension PostShowViewController :  PostShowDisplayLogic  {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CommentTableCell.self, forCellReuseIdentifier: "CommentTableCell")
+        tableView.register(UINib(nibName: String(describing: CommentTableCell.self), bundle: nil), forCellReuseIdentifier: CommentTableCell.cellIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
         view.backgroundColor = UIColor.blackTraslucid
         view.isOpaque = false
@@ -107,7 +107,7 @@ extension PostShowViewController :  PostShowDisplayLogic  {
     }
     
     func showPost(viewModel: PostShow.Models.ViewModel) {
-        self.lblPost.text = viewModel.title
+        self.lblPost.text = String(format: "%@\n%@", "commentsscreen.post.title".localized, viewModel.title ?? "")
     }
     func doClose() {
         router?.performCloseNavigation()
@@ -133,35 +133,4 @@ extension PostShowViewController : UITableViewDelegate, UITableViewDataSource {
     func reloadTable() {
         self.tableView.reloadData()
     }
-}
-
-
-
-class CommentTableCell: UITableViewCell {
-
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblEmail: UILabel!
-    @IBOutlet weak var lblBody: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        setupView()
-    }
-
-   static var cellIdentifier: String {
-        return String(describing: CommentTableCell.self)
-    }
-
-    func setupView() {
-        selectionStyle = .none
-    }
-
-    func updateUI(data: PostShow.Models.CommentCellData) {
-      
-        self.lblEmail.text = data.email
-        self.lblName.text = data.name
-        self.lblBody.text = data.body
-    }
-
 }

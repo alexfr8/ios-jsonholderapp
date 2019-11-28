@@ -15,6 +15,8 @@
 		C12B7F90238DBD220029D78D /* PostShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F8A238DBD220029D78D /* PostShowViewController.swift */; };
 		C12B7F91238DBD220029D78D /* PostShowInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B7F8B238DBD220029D78D /* PostShowInteractor.swift */; };
 		C12B7F93238DBD5A0029D78D /* PostShowStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B7F92238DBD5A0029D78D /* PostShowStoryboard.storyboard */; };
+		C12C81BE2390447800EF2758 /* CommentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12C81BD2390447800EF2758 /* CommentTableCell.xib */; };
+		C12C81C02390448700EF2758 /* CommentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12C81BF2390448700EF2758 /* CommentTableCell.swift */; };
 		C134A9B9238AEC3C005A63B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9B8238AEC3C005A63B9 /* User.swift */; };
 		C134A9BB238AEC97005A63B9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9BA238AEC97005A63B9 /* Address.swift */; };
 		C134A9BD238AECE1005A63B9 /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C134A9BC238AECE1005A63B9 /* Geo.swift */; };
@@ -74,6 +76,8 @@
 		C12B7F8A238DBD220029D78D /* PostShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowViewController.swift; sourceTree = "<group>"; };
 		C12B7F8B238DBD220029D78D /* PostShowInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShowInteractor.swift; sourceTree = "<group>"; };
 		C12B7F92238DBD5A0029D78D /* PostShowStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostShowStoryboard.storyboard; sourceTree = "<group>"; };
+		C12C81BD2390447800EF2758 /* CommentTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableCell.xib; sourceTree = "<group>"; };
+		C12C81BF2390448700EF2758 /* CommentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableCell.swift; sourceTree = "<group>"; };
 		C134A9B8238AEC3C005A63B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C134A9BA238AEC97005A63B9 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C134A9BC238AECE1005A63B9 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 		C12B0D33238EFE4700E1B780 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C12C81BD2390447800EF2758 /* CommentTableCell.xib */,
+				C12C81BF2390448700EF2758 /* CommentTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12C81BE2390447800EF2758 /* CommentTableCell.xib in Resources */,
 				C13558CF238C548E00DBAFF9 /* TodoCollectionCell.xib in Resources */,
 				C134A9E7238B1FEA005A63B9 /* UserCollectionCell.xib in Resources */,
 				C13558CE238C548E00DBAFF9 /* PostCollectionCell.xib in Resources */,
@@ -441,6 +448,7 @@
 				C134A9B9238AEC3C005A63B9 /* User.swift in Sources */,
 				C134A9BD238AECE1005A63B9 /* Geo.swift in Sources */,
 				C134A9D9238AFFA2005A63B9 /* MainRouter.swift in Sources */,
+				C12C81C02390448700EF2758 /* CommentTableCell.swift in Sources */,
 				C134A9DB238AFFA2005A63B9 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
