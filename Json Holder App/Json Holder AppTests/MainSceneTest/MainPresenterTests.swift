@@ -39,11 +39,14 @@ class MainPresenterTests: XCTestCase {
     
     class MainDisplayLogicSpy: MainDisplayLogic {
         
+        
+        
         var setupViewCalled = false
         var showUserCalled = false
         var showPostForUserCalled = false
         var navigateToPostCommentsCalled = false
         var showErrorCalled = false
+        var showCommentForPostCalled = false
         
         func setupView(viewModel: Main.Models.ViewModel) {
             setupViewCalled = true
@@ -65,6 +68,10 @@ class MainPresenterTests: XCTestCase {
             showErrorCalled = true
         }
         
+        func showCommentsForPost(viewModel: Main.Models.ViewModel) {
+            showCommentForPostCalled = true
+        }
+        
     }
     
     // MARK: Tests
@@ -79,7 +86,7 @@ class MainPresenterTests: XCTestCase {
         sut.prepareNavigationFor(response: response)
         
         // Then
-        XCTAssertTrue(spy.navigateToPostCommentsCalled, "prepareNavigationFor should call de navigation method")
+        XCTAssertTrue(spy.showCommentForPostCalled, "prepareNavigationFor should call de navigation method")
     }
     
     func testSetupView() {

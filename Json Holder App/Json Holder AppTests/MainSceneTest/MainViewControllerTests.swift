@@ -37,7 +37,7 @@ class MainViewControllerTests: XCTestCase {
     func setupMainViewController() {
         let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "MainStoryboard", bundle: bundle)
-        sut = storyboard.instantiateInitialViewController() as! MainViewController
+        sut = storyboard.instantiateInitialViewController() as? MainViewController
     }
     
     func loadView() {
@@ -158,7 +158,8 @@ class MainViewControllerTests: XCTestCase {
         
         // When
         loadView()
-        sut.navigateToPostComments(viewModel: viewModel)
+        sut.showCommentsForPost(viewModel: viewModel)
+       
         // Then
         //TODO: CHECK DEVELOPMENT
         //PENDING COMPLETE THE DEVELOPMENT.
